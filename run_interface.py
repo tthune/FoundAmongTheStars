@@ -23,7 +23,11 @@ def main():
 	drive_rating = int(input("Enter your lead ship's spike drive rating: "))
 	nav_skill = int(input('Enter your nav skill rating: '))
 
+	int_mod = int(input('Enter your Intelligence Modifier: '))
+	tech_med_skill = int(input('Enter your Tech/Medical skill level: '))
+
 	spike_difficulty(num_of_hex,chart_age,drive_rating,nav_skill)
+	tech_med_healing(int_mod,tech_med_skill)
 
 
 """
@@ -72,6 +76,24 @@ def spike_difficulty(num_of_hex,chart_age,drive_rating,nav_skill):
 		print("and it will take", spike_time, "hours")
 		print(" ")
 
+def tech_med_healing(int_mod,tech_med_skill):
+	heal_mod = int(int_mod + tech_med_skill)
+	heal_roll = sum(roll_dice(2,6)) + heal_mod
+
+	print(heal_mod)
+
+	print(heal_roll)
+
+	if heal_roll > 6 and heal_roll < 12:
+		regen = heal_roll - 6
+	elif heal_roll > 11 and heal_roll < 16:
+		regen = 2*(heal_roll-11) + 5
+	elif heal_roll > 15:
+		regen = 3*(heal_roll-15) + 5 + 8
+	else:
+		print("failed to calculate Tech/Medical healing") 
+
+	print(regen)
 
 def roll_dice(num_of_dice, sides):
 	return [random.randint(1,sides) for i in range(num_of_dice)]
