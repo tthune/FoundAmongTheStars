@@ -13,11 +13,15 @@ improve their Stars Without Number experience.
 import random
 import sys
 import math
+import flask
 #import pygtk
 #pygtk.require('2.0')
 #import gtk
 
 def main():
+	# Set Up
+	args = settings.get_args()
+
 	num_of_hex = int(input('Number of hexes in the spike jump: '))
 	chart_age = float(input('Enter the age of the relevant navigational charts in years: '))
 	drive_rating = int(input("Enter your lead ship's spike drive rating: "))
@@ -50,6 +54,18 @@ def health_roll:
 	else
 		print("Error: Character Class Not Recognized")
 """
+
+def run_tests():
+
+def run_debug():
+
+def run_production():
+	http_server = WSGIServer(('', 9997), app)
+    try:
+        http_server.serve_forever()
+    except KeyboardInterrupt:
+        return
+
 
 def spike_difficulty(num_of_hex,chart_age,drive_rating,nav_skill):
 	
